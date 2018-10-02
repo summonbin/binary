@@ -13,7 +13,7 @@ SOURCE_TYPE=$3
 #### Read config ####
 #####################
 
-BIN_CACHE_DIR=$(<"$CONFIG_DIR/cache")
+BIN_CACHE_DIR=$( eval "echo $(<"$CONFIG_DIR/cache")" )
 
 
 #########################
