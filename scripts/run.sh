@@ -13,7 +13,7 @@ SOURCE_TYPE=$3
 #### Read config ####
 #####################
 
-BIN_CACHE_DIR=$(<$CONFIG_DIR/cache)
+BIN_CACHE_DIR=$( eval "echo $(<"$CONFIG_DIR/cache")" )
 
 
 #########################
@@ -36,14 +36,14 @@ then
   unset BIN_ARGS[5]
   BIN_ARGS=${BIN_ARGS[@]}
 
-  REPO_DIR=$BIN_CACHE_DIR/$BIN_NAME/$GIT_BRANCH
-  BIN_PATH=$REPO_DIR/$BIN_SUB_PATH/$BIN_NAME
+  REPO_DIR="$BIN_CACHE_DIR/$BIN_NAME/$GIT_BRANCH"
+  BIN_PATH="$REPO_DIR/$BIN_SUB_PATH/$BIN_NAME"
 
   # Clone repository
   if [ ! -f "$BIN_PATH" ]
   then
-    rm -rf $REPO_DIR
-    git clone $GIT_URL $REPO_DIR -b $GIT_BRANCH --single-branch --depth 1
+    rm -rf "$REPO_DIR"
+    git clone "$GIT_URL" "$REPO_DIR" -b "$GIT_BRANCH" --single-branch --depth 1
   fi
 elif [ "$SOURCE_TYPE" = "download" ]
 then
@@ -67,7 +67,7 @@ then
   # Download and unzip file
   if [ ! -f "$BIN_PATH" ]
   then
-    mkdir -p $DOWNLOAD_DIR
+    mkdir -p "$DOWNLOAD_DIR"
     curl -L -C - "$DOWNLOAD_URL" -o "$DOWNLOAD_DIR/$DOWNLOAD_FILE_NAME"
     rm -rf "$CONTENT_DIR"
     unzip "$DOWNLOAD_DIR/$DOWNLOAD_FILE_NAME" -d "$CONTENT_DIR"
