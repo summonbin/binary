@@ -17,7 +17,7 @@ DEFAULT_CACHE_PATH=$3
 #### Build driver ####
 ######################
 
-mkdir -p $INSTALL_PATH/$DRIVER_NAME
+mkdir -p "$INSTALL_PATH/$DRIVER_NAME"
 curl -L "$BASE_URL/$VERSION/scripts/run.sh" -o "$INSTALL_PATH/$DRIVER_NAME/run.sh"
 
 
@@ -25,7 +25,7 @@ curl -L "$BASE_URL/$VERSION/scripts/run.sh" -o "$INSTALL_PATH/$DRIVER_NAME/run.s
 #### Build scheme ####
 ######################
 
-mkdir -p $SCHEME_PATH/$DRIVER_NAME
+mkdir -p "$SCHEME_PATH/$DRIVER_NAME"
 if [ ! -f "$SCHEME_PATH/$DRIVER_NAME/cache" ]
 then
   echo "$DEFAULT_CACHE_PATH/$DRIVER_NAME" > "$SCHEME_PATH/$DRIVER_NAME/cache"
