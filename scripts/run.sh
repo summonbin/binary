@@ -7,6 +7,12 @@ BASE_DIR=$(dirname "$0")
 CONFIG_DIR=$1
 BIN_NAME=$2
 SOURCE_TYPE=$3
+BIN_ARGS=()
+
+for i
+do
+  BIN_ARGS+=(\"${i}\")
+done
 
 
 #####################
@@ -27,7 +33,6 @@ then
   BIN_SUB_PATH=$6
 
   # Arguments for bin
-  BIN_ARGS=("$@")
   unset BIN_ARGS[0]
   unset BIN_ARGS[1]
   unset BIN_ARGS[2]
@@ -51,7 +56,6 @@ then
   BIN_SUB_PATH=$5
 
   # Arguments for bin
-  BIN_ARGS=("$@")
   unset BIN_ARGS[0]
   unset BIN_ARGS[1]
   unset BIN_ARGS[2]
