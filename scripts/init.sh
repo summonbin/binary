@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 DRIVER_NAME="binary"
 VERSION="0.1.2"
 BASE_URL="https://raw.githubusercontent.com/summonbin/binary"
