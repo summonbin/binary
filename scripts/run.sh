@@ -12,7 +12,14 @@ SOURCE_TYPE=$3
 #### Read config ####
 #####################
 
-BIN_CACHE_DIR=$( eval "echo $(<"$CONFIG_DIR/cache")" )
+BIN_CACHE_CONFIG_FILE="$CONFIG_DIR/cache"
+
+if [ -f "$BIN_CACHE_CONFIG_FILE" ]
+then
+  BIN_CACHE_DIR=$(eval echo "$(< "$BIN_CACHE_CONFIG_FILE")")
+else
+  exit 1
+fi
 
 
 #########################
