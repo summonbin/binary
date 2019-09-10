@@ -1,17 +1,11 @@
 #!/bin/bash -e
-###################
-#### Arguments ####
-###################
 
+# Arguments
 CONFIG_DIR=$1
 BIN_NAME=$2
 SOURCE_TYPE=$3
 
-
-#####################
-#### Read config ####
-#####################
-
+# Configurations
 BIN_CACHE_CONFIG_FILE="$CONFIG_DIR/cache"
 
 if [ -f "$BIN_CACHE_CONFIG_FILE" ]
@@ -21,11 +15,7 @@ else
   exit 1
 fi
 
-
-#########################
-#### Download binary ####
-#########################
-
+# Prepare binary
 if [ "$SOURCE_TYPE" = "repo" ]
 then
   GIT_URL=$4
@@ -36,7 +26,6 @@ then
   REPO_DIR="$BIN_CACHE_DIR/$BIN_NAME/$GIT_BRANCH"
   BIN_PATH="$REPO_DIR/$BIN_SUB_PATH/$BIN_NAME"
 
-  # Clone repository
   if [ ! -f "$BIN_PATH" ]
   then
     rm -rf "$REPO_DIR"
@@ -53,7 +42,6 @@ then
   CONTENT_DIR="$BIN_CACHE_DIR/$BIN_NAME/$DOWNLOAD_FILE_NAME/content"
   BIN_PATH="$CONTENT_DIR/$BIN_SUB_PATH/$BIN_NAME"
 
-  # Download and unzip file
   if [ ! -f "$BIN_PATH" ]
   then
     mkdir -p "$DOWNLOAD_DIR"
@@ -63,11 +51,7 @@ then
   fi
 fi
 
-
-########################
-#### Execute binary ####
-########################
-
+# Execute binary
 if [ -t 1 ]
 then
   eval "$BIN_PATH" "$@" < /dev/tty
