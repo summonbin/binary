@@ -16,7 +16,7 @@ else
 fi
 
 # Prepare binary
-if [ "$SOURCE_TYPE" = "repo" ]
+if [ "$SOURCE_TYPE" = "git" ]
 then
   GIT_URL=$4
   GIT_BRANCH=$5
@@ -31,7 +31,7 @@ then
     rm -rf "$REPO_DIR"
     git clone "$GIT_URL" "$REPO_DIR" -b "$GIT_BRANCH" --single-branch --depth 1
   fi
-elif [ "$SOURCE_TYPE" = "download" ]
+elif [ "$SOURCE_TYPE" = "archive" ]
 then
   DOWNLOAD_URL=$4
   BIN_SUB_PATH=$5
