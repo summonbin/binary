@@ -3,7 +3,6 @@
 #### Arguments ####
 ###################
 
-BASE_DIR=$(dirname "$0")
 CONFIG_DIR=$1
 BIN_NAME=$2
 SOURCE_TYPE=$3
