@@ -49,6 +49,8 @@ then
     rm -rf "$CONTENT_DIR"
     unzip "$DOWNLOAD_DIR/$DOWNLOAD_FILE_NAME" -d "$CONTENT_DIR"
   fi
+else
+  exit 1
 fi
 
 # Execute binary
